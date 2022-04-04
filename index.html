@@ -16,14 +16,40 @@
         }
 
         .loader {
-            background-image: url('pexel3.jpg');
+            background-image: url('https://static.wixstatic.com/media/e617fd_d115e1f6920040d592511d527fbd6335~mv2.jpg/v1/fill/w_2500,h_1455,al_c/e617fd_d115e1f6920040d592511d527fbd6335~mv2.jpg');
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
             height: 100vh;
         }
 
-        IMG {
+        #logo {
+            width: 200px;
+            height: 150px;
+            animation: animate 5s linear infinite;
+            opacity: 0.5;
+            transition: 2s ease-in-out;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: perspective(1000px) rotateY(0deg);
+            }
+
+            50% {
+                transform: perspective(1000px) rotateY(90deg);
+            }
+
+            80% {
+                transform: perspective(1000px) rotateX(180deg);
+            }
+
+            100% {
+                transform: perspective(1000px) rotateX(360deg);
+            }
+        }
+
+        #lg {
             width: 150px;
             height: 50px;
         }
@@ -36,7 +62,7 @@
 
         .progression {
             position: absolute;
-            bottom: 0px;
+            top: 97vh;
             width: 100%;
         }
 
@@ -49,7 +75,7 @@
             bottom: 0;
         }
     </style>
-    <script>
+    <script>/*
         function redirection() {
             window.location.href = 'html.html';
         }
@@ -60,7 +86,10 @@
 <body>
     <div class="loader" id="loder">
         <div class="image">
-            <img src="WAGSYSTEMS.jpg" alt="">
+            <img src="WAGSYSTEMS.jpg" alt="" id="lg">
+        </div>
+        <div class="logo">
+            <img src="logo.png" alt="" id="logo">
         </div>
         <div class="progression">
             <div class="progress progress-striped active">
@@ -74,6 +103,9 @@
         function makeProgress() {
             if (i < 100) {
                 i = i + 1;
+                if (i==40) {     
+                 document.getElementById('logo').style.opacity=1;   
+                }
                 $(".progress-bar").css("width", i + "%").text(i + " %");
             }
             setTimeout("makeProgress()", 110);
